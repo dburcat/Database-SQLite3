@@ -29,6 +29,6 @@ select tracks.title, albums.title as album, artists.name as artist, tracks.durat
 select genres.name, round(avg(tracks.duration_sec),1) as avg_duration from tracks join  albums on tracks.album_id = albums.id join genres on albums.genre_id = genres.id group by albums.genre_id
 
 -- Q10: Artist with the most total tracks — artist name and total count.
-
+select artists.name, count(*) as total_count from tracks join albums on tracks.album_id = albums.id join artists on albums.artist_id = artists.id group by albums.artist_id
 
 -- BONUS: Per-album summary (title, artist, genre, track count, total minutes).
