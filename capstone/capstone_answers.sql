@@ -32,3 +32,4 @@ select genres.name, round(avg(tracks.duration_sec),1) as avg_duration from track
 select artists.name, count(*) as total_count from tracks join albums on tracks.album_id = albums.id join artists on albums.artist_id = artists.id group by albums.artist_id
 
 -- BONUS: Per-album summary (title, artist, genre, track count, total minutes).
+select albums.title as album, artists.name as artist, genres.name as genre, count(*) as track_count, sum(tracks.duration_sec) / 60 as total_minutes from tracks join albums on tracks.album_id = albums.id join artists on albums.artist_id = artists.id join genres on albums.genre_id = genres.id group by albums.id order by track_count desc
