@@ -26,7 +26,7 @@ select artists.name as artist, count(*) as album_count from albums inner join ar
 select tracks.title, albums.title as album, artists.name as artist, tracks.duration_sec from tracks inner join albums on tracks.album_id = albums.id inner join artists on albums.artist_id = artists.id where tracks.duration_sec > 300
 
 -- Q9: Average track duration per genre (in seconds, rounded to 1 decimal).
-
+select genres.name, round(avg(tracks.duration_sec),1) as avg_duration from tracks join  albums on tracks.album_id = albums.id join genres on albums.genre_id = genres.id group by albums.genre_id
 
 -- Q10: Artist with the most total tracks — artist name and total count.
 
