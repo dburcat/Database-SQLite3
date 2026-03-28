@@ -20,7 +20,7 @@ select tracks.title, albums.title as album,substr(time(duration_sec, 'unixepoch'
 select albums.title as album, count(*) as track_count from tracks inner join albums on tracks.album_id = albums.id group by tracks.album_id order by track_count desc
 
 -- Q7: Artists with more than one album.
-
+select artists.name as artist, count(*) as album_count from albums inner join artists on albums.artist_id = artists.id group by albums.artist_id having count(*) > 1
 
 -- Q8: Tracks longer than 5 minutes — track title, album title, artist name.
 
