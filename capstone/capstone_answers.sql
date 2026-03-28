@@ -23,7 +23,7 @@ select albums.title as album, count(*) as track_count from tracks inner join alb
 select artists.name as artist, count(*) as album_count from albums inner join artists on albums.artist_id = artists.id group by albums.artist_id having count(*) > 1
 
 -- Q8: Tracks longer than 5 minutes — track title, album title, artist name.
-
+select tracks.title, albums.title as album, artists.name as artist, tracks.duration_sec from tracks inner join albums on tracks.album_id = albums.id inner join artists on albums.artist_id = artists.id where tracks.duration_sec > 300
 
 -- Q9: Average track duration per genre (in seconds, rounded to 1 decimal).
 
